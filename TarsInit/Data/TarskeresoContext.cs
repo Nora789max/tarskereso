@@ -22,8 +22,9 @@ namespace TarsInit.Data
         protected TarskeresoContext()
         {
         }
-
-       
+        public DbSet<Erdeklodes> Erdeklodesek { get; set; }
+        public DbSet<Profil> Profilok { get; set; }
+        public DbSet<ProfilErdeklodes> ProfilErdeklodesek { get; set; }
 
 
 
