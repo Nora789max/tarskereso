@@ -83,6 +83,28 @@ namespace MyApp
             Console.WriteLine(q72.Count());
 
             Console.WriteLine("8.feladat");
+            Console.WriteLine("Emberek és érdekődésük:");
+
+            var profils = db.Profilok.AsNoTracking().Include(p=> p.ProfilErdeklodesek).ThenInclude(p=> p.Erdeklodes).ToList();
+            var qk = db.Profilok.OrderByDescending(x => x.EvesBevetelHuf).Take(1);
+            foreach (var item in qk) 
+            {
+                Console.WriteLine(item);
+                foreach (var pe in item.ProfilErdeklodesek)
+                {
+                    Console.WriteLine(pe.Erdeklodes + " + " + pe.ErdeklodesId);
+                }
+            }
+
+            Console.WriteLine("8.feladat");
+            var q8 = db.ProfilErdeklodesek.Select(x => x.Erdeklodes).Distinct();
+            foreach (var item in q8) { Console.Write(item + ", "); }
+
+            Console.WriteLine("9.feladat");
+
+            var q9 = db.Profilok.GroupBy(x => x.Varos).Select(x=> new {Varos=x.Key, profilDb=x.Count()}).OrderBy(x=>x.Varos);
+            foreach (var item in q9)
+            { Console.WriteLine(item); }
 
         }
     }
