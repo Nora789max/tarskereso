@@ -49,6 +49,11 @@ namespace MyApp
                 }
                 db.SaveChanges();
             }
+
+            foreach (var item in db.Profilok)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
