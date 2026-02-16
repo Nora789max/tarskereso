@@ -16,9 +16,9 @@ namespace TarsInit.Model
         {
             Nev = line.Split(";")[1];
         }
-
+        public ICollection<ProfilErdeklodes> ProfilErdeklodesek { get; set; }
         public int Id { get; set; }
-        public string Nev { get; set; } = string.Empty;
+        public string Nev { get; set; } 
 
         public override string? ToString()
         {
